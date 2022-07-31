@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+// import First from './First';
+// import Second from './Second';
+import Myroutes from './Myroutes';
+// import { combineReducers, createStore } from 'redux';
+// import counterReducer from './ReduxExample/counterReducer';
+import { Provider } from 'react-redux';
+// import gameReducer from './ReduxExample/gameReducer';
+import store from './ReduxExample/store';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+
+
 
 function App() {
+  const myPersistor = persistStore(store)
+
+
+  // const store = createStore(counterReducer)
+  // const store = createStore(gameReducer)
+
+  // const rootreducer = combineReducers({
+  //   counterStore: counterReducer,
+  //   gameStore: gameReducer
+  // })
+
+  // const store = createStore(rootreducer)
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <PersistGate persistor={myPersistor}>
+        <div className="App">
+          <Myroutes />
+        </div>
+      </PersistGate>
+    </Provider>
   );
 }
 
