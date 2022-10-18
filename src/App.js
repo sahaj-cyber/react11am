@@ -7,15 +7,16 @@ import Myroutes from './Myroutes';
 // import counterReducer from './ReduxExample/counterReducer';
 import { Provider } from 'react-redux';
 // import gameReducer from './ReduxExample/gameReducer';
-import store from './ReduxExample/store';
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
+// import store from './ReduxExample/store';
+// import { persistStore } from 'redux-persist';
+// import { PersistGate } from 'redux-persist/integration/react';
 
+import {store} from './components/reducer/store'
 
 
 
 function App() {
-  const myPersistor = persistStore(store)
+  // const myPersistor = persistStore(store)
 
 
   // const store = createStore(counterReducer)
@@ -32,11 +33,11 @@ function App() {
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={myPersistor}>
+      {/* <PersistGate persistor={myPersistor}> */}
         <div className="App">
           <Myroutes />
         </div>
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   );
 }
